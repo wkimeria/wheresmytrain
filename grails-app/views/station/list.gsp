@@ -7,6 +7,16 @@
 		<gvisualization:apiImport/>
 		<g:set var="entityName" value="${message(code: 'station.label', default: 'Station')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
+		<script type="text/javascript">
+			window.onload = setupRefresh;
+			
+			function setupRefresh() {
+			  setTimeout("refreshPage();", 30000);
+			}
+			function refreshPage() {
+			   window.location = location.href;
+			}
+		</script>
 	</head>
 	<body>
 		<a href="#list-station" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
