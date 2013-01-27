@@ -58,12 +58,10 @@ grails.project.dependency.resolution = {
 
         runtime ":database-migration:1.2.1"
 
-        compile ':cache:1.0.1'
-		
-		compile ':google-visualization:0.5.6'
-		
-		compile ":redis:1.3.2"
-		
+        compile ':cache:1.0.1'		
+		compile ':google-visualization:0.5.6'		
+		compile ":redis:1.3.2"		
 		compile ":quartz:1.0-RC5"
+		
     }
 }

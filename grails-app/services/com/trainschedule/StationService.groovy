@@ -17,13 +17,12 @@ class StationService {
 	}
 	
 	def getRealTimeInfoForStation(Station s){
-		return getTimesForStation(s)		
+		def lineData = scheduleInformationService.getScheduleForLine(s.line)
+		return getTimesForStation(s, lineData)				
 	}
 	
-	def getTimesForStation(Station s){
+	def getTimesForStation(Station s, JSONObject lineData){
 		def stationSchedule =[:]		
-		def lineData = scheduleInformationService.getScheduleForLine(s.line)
-		
 		if(lineData){
 			lineData.TripList.Trips.each{ direction ->
 				def destination = direction.Destination
