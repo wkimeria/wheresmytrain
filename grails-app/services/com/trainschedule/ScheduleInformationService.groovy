@@ -5,6 +5,7 @@ import org.codehaus.groovy.grails.web.json.JSONObject
 class ScheduleInformationService {
 	
 	def redisCachingService
+	def grailsApplication
 	
 	private final static BASE_URL ="http://Developer.mbta.com/lib/rthr/"
 
@@ -17,7 +18,7 @@ class ScheduleInformationService {
 	
 	def cacheNewDataForLineFromMBTA(String line){
 		def result = getScheduleForLineFromMBTA(line)
-		redisCachingService.save("schedule:${line}", result, 60) //Expire after 30 seconds
+		redisCachingService.save("schedule:${line}", result, grailsApplication.config.schedule.cache.expiry)
 	}
 	
 	def getScheduleForLineFromMBTA(String line){

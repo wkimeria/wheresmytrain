@@ -7,13 +7,14 @@ class GetScheduleJob {
   
 	def scheduleInformationService
 	def concurrent = false
+	def grailsApplication
   
 	def group = "MyGroup"
   	def execute(){
 		  def lines =['red','blue','orange']
 		  lines.each{			  		  
 			  scheduleInformationService.cacheNewDataForLineFromMBTA(it)
-			  Thread.sleep(15000)			
+			  Thread.sleep(grailsApplication.config.schedule.fetch.interval)			
 		  }	 
 	}
 }

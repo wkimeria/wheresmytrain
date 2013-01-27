@@ -64,6 +64,9 @@ environments {
     development {
         grails.logging.jul.usebridge = true
 		
+		schedule.fetch.interval = 15000 //Schedule fetch Interval, in seconds
+		schedule.cache.expiry = 60 //Amount of time to cache schedule
+		
 		grails{
 			redis {
 				poolConfig {
@@ -86,9 +89,41 @@ environments {
 			}
 		}
     }
+	
+	test {
+		grails.logging.jul.usebridge = true
+		
+		schedule.fetch.interval = 15000 //Schedule fetch Interval, in seconds
+		schedule.cache.expiry = 60 //Amount of time to cache schedule
+		
+		grails{
+			redis {
+				poolConfig {
+					// jedis pool specific tweaks here, see jedis docs & src
+					// ex: testWhileIdle = true
+					maxActive = 10
+					maxIdle = 5
+					minIdle = 1
+					testOnBorrow = true
+					testOnReturn = true
+					testWhileIdle = true
+					numTestsPerEvictionRun = 10
+					timeBetweenEvictionRunsMillis = 60000
+					maxWait = 3000
+				}
+				port = 6379
+				host = "localhost"
+				timeout = 2000 //default in milliseconds
+				password = "" //defaults to no password
+			}
+		}
+	}
     production {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
+		
+		schedule.fetch.interval = 15000 //Schedule fetch Interval, in seconds
+		schedule.cache.expiry = 60 //Amount of time to cache schedule
 		
 		grails{
 			redis {
