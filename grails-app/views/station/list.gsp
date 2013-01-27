@@ -37,17 +37,9 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="line" title="${message(code: 'station.line.label', default: 'Line')}" />
+						<g:sortableColumn property="line" title="${message(code: 'station.line.label', default: 'Line')}" />										
 					
-						<g:sortableColumn property="platformKey" title="${message(code: 'station.platformKey.label', default: 'Platform Key')}" />
-					
-						<g:sortableColumn property="platformName" title="${message(code: 'station.platformName.label', default: 'Platform Name')}" />
-					
-						<g:sortableColumn property="stationName" title="${message(code: 'station.stationName.label', default: 'Station Name')}" />
-					
-						<g:sortableColumn property="platformOrder" title="${message(code: 'station.platformOrder.label', default: 'Platform Order')}" />
-					
-						<g:sortableColumn property="startOfLine" title="${message(code: 'station.startOfLine.label', default: 'Start Of Line')}" />
+						<g:sortableColumn property="stopName" title="${message(code: 'station.stopName.label', default: 'Station Name')}" />					
 					
 					</tr>
 				</thead>
@@ -57,15 +49,7 @@
 					
 						<td><g:link action="show" id="${stationInstance.id}">${fieldValue(bean: stationInstance, field: "line")}</g:link></td>
 					
-						<td>${fieldValue(bean: stationInstance, field: "platformKey")}</td>
-					
-						<td>${fieldValue(bean: stationInstance, field: "platformName")}</td>
-					
-						<td>${fieldValue(bean: stationInstance, field: "stationName")}</td>
-					
-						<td>${fieldValue(bean: stationInstance, field: "platformOrder")}</td>
-					
-						<td>${fieldValue(bean: stationInstance, field: "startOfLine")}</td>
+						<td>${fieldValue(bean: stationInstance, field: "stopName")}</td>
 					
 					</tr>
 				</g:each>

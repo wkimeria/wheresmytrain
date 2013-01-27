@@ -10,7 +10,8 @@ class BootStrap {
 			new File("data/RealTimeHeavyRailKeys.csv").eachLine{line->
 				if(counter!=0){
 					def row = line.split(',')
-					Station station = new Station(
+					if(!Station.findByStopNameAndLine(row[11],row[0])){
+						Station station = new Station(
 							line:row[0],
 							platformKey:row[1],
 							platformName:row[2],
@@ -26,6 +27,7 @@ class BootStrap {
 							stopDescription:row[12],
 							latitude:row[13].toFloat(),
 							longitude:row[14].toFloat()).save(failOnError:true)
+					}					
 				}
 				counter++
 			}

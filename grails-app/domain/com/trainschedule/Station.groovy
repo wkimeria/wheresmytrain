@@ -29,7 +29,7 @@ class Station {
 		branch blank:false
 		direction blank:false
 		stopId blank:false		
-		stopName blank:false		
+		stopName blank:false, unique: ['line']
 		latitude blank:false
 		longitude blank:false
 		latitude min:-90d, max:90d
