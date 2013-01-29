@@ -12,8 +12,8 @@ class StationController {
     }
 
     def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [stationInstanceList: Station.list(params), stationInstanceTotal: Station.count(),
+        params.max = 200
+        [stationInstanceList: Station.list(max:max, sort: "platformOrder", order: "desc"), stationInstanceTotal: Station.count(),
 			mapColumns: stationService.headers(), mapData: stationService.data()]
     }
 
