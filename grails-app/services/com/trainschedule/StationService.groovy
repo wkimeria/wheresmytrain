@@ -39,10 +39,16 @@ class StationService {
 					}
 				}
 			}
+			
+			def result = [:]
+			result.put(s.toString(),stationSchedule)
+			/*
 			def result =s.toString()
 			stationSchedule.each{
 				result+="\\n" + it
 			}			
+			return result
+			*/
 			return result
 		}else{		
 			return s.toString()

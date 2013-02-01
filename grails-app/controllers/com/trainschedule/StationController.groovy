@@ -39,8 +39,10 @@ class StationController {
             redirect(action: "list")
             return
         }
-
-        [stationInstance: stationInstance]
+		
+		def schedule = stationService.getRealTimeInfoForStation(stationInstance)
+		
+        [stationInstance: stationInstance, schedule:schedule]
     }
 
     def edit(Long id) {

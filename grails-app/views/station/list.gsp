@@ -9,20 +9,20 @@
 <g:set var="entityName"
 	value="${message(code: 'station.label', default: 'Station')}" />
 <title><g:message code="default.list.label" args="[entityName]" /></title>
+<script type="text/javascript">
+	window.onload = setupRefresh;
 
+	function setupRefresh() {
+		setTimeout("refreshPage();", 10000);
+	}
+	function refreshPage() {
+		window.location = location.href;
+	}
+</script>
 </head>
 <body>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			window.onload = setupRefresh;
-
-			function setupRefresh() {
-				setTimeout("refreshPage();", 30000);
-			}
-			function refreshPage() {
-				window.location = location.href;
-			}
-
 			$(function() {
 				$("#tabs").tabs();
 			});
@@ -61,10 +61,6 @@
 			<table>
 				<thead>
 					<tr>
-
-						<g:sortableColumn property="line"
-							title="${message(code: 'station.line.label', default: 'Line')}" />
-
 						<g:sortableColumn property="stopName"
 							title="${message(code: 'station.stopName.label', default: 'Station Name')}" />
 
@@ -75,15 +71,9 @@
 						var="stationInstance">
 						<g:if test="${stationInstance.line == 'Red'}">
 							<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
 								<td><g:link action="show" id="${stationInstance.id}">
-										${fieldValue(bean: stationInstance, field: "line")}
-									</g:link></td>
-
-								<td>
-									${fieldValue(bean: stationInstance, field: "stopName")}
-								</td>
-
+										${fieldValue(bean: stationInstance, field: "stopName")}
+								</g:link></td>
 							</tr>
 						</g:if>
 
@@ -106,10 +96,6 @@
 			<table>
 				<thead>
 					<tr>
-
-						<g:sortableColumn property="line"
-							title="${message(code: 'station.line.label', default: 'Line')}" />
-
 						<g:sortableColumn property="stopName"
 							title="${message(code: 'station.stopName.label', default: 'Station Name')}" />
 
@@ -120,15 +106,9 @@
 						var="stationInstance">
 						<g:if test="${stationInstance.line == 'Orange'}">
 							<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
 								<td><g:link action="show" id="${stationInstance.id}">
-										${fieldValue(bean: stationInstance, field: "line")}
-									</g:link></td>
-
-								<td>
-									${fieldValue(bean: stationInstance, field: "stopName")}
-								</td>
-
+										${fieldValue(bean: stationInstance, field: "stopName")}
+								</g:link></td>
 							</tr>
 						</g:if>
 
@@ -150,10 +130,6 @@
 			<table>
 				<thead>
 					<tr>
-
-						<g:sortableColumn property="line"
-							title="${message(code: 'station.line.label', default: 'Line')}" />
-
 						<g:sortableColumn property="stopName"
 							title="${message(code: 'station.stopName.label', default: 'Station Name')}" />
 
@@ -164,15 +140,9 @@
 						var="stationInstance">
 						<g:if test="${stationInstance.line == 'Blue'}">
 							<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
 								<td><g:link action="show" id="${stationInstance.id}">
-										${fieldValue(bean: stationInstance, field: "line")}
-									</g:link></td>
-
-								<td>
-									${fieldValue(bean: stationInstance, field: "stopName")}
-								</td>
-
+										${fieldValue(bean: stationInstance, field: "stopName")}
+								</g:link></td>
 							</tr>
 						</g:if>
 
