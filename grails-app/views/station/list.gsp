@@ -5,30 +5,29 @@
 <head>
 <meta name="layout" content="main">
 <gvisualization:apiImport />
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
-
+<g:javascript library="jquery" />
 <g:set var="entityName"
 	value="${message(code: 'station.label', default: 'Station')}" />
 <title><g:message code="default.list.label" args="[entityName]" /></title>
-<script type="text/javascript">
-	window.onload = setupRefresh;
 
-	function setupRefresh() {
-		setTimeout("refreshPage();", 30000);
-	}
-	function refreshPage() {
-		window.location = location.href;
-	}
-
-	$(function() {
-		$("#tabs").tabs();
-	});
-</script>
 </head>
 <body>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			window.onload = setupRefresh;
+
+			function setupRefresh() {
+				setTimeout("refreshPage();", 30000);
+			}
+			function refreshPage() {
+				window.location = location.href;
+			}
+
+			$(function() {
+				$("#tabs").tabs();
+			});
+		});
+	</script>
 	<a href="#list-station" class="skip" tabindex="-1"><g:message
 			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
 	<div class="nav" role="navigation">
@@ -91,7 +90,7 @@
 					</g:each>
 				</tbody>
 			</table>
-		
+
 
 		</div>
 		<div id="orange-line">
@@ -136,7 +135,7 @@
 					</g:each>
 				</tbody>
 			</table>
-			
+
 		</div>
 
 		<div id="blue-line">
@@ -180,7 +179,7 @@
 					</g:each>
 				</tbody>
 			</table>
-			
+
 
 		</div>
 	</div>

@@ -62,6 +62,7 @@ grails.project.dependency.resolution = {
 		compile ':google-visualization:0.5.6'		
 		compile ":redis:1.3.2"		
 		compile ":quartz:1.0-RC5"
+		compile ":jquery-ui:1.8.24"
 		
     }
 }
