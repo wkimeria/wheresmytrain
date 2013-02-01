@@ -12,16 +12,16 @@ class StationService {
 	
     def data(){
 		Station.list().collect { s ->			
-			[s.latitude, s.longitude, getRealTimeInfoForStation(s)]			
+			[s.latitude, s.longitude, getRealTimeInfoForStation(s, "html")]			
 		}
 	}
 	
-	def getRealTimeInfoForStation(Station s){
+	def getRealTimeInfoForStation(Station s, format="map"){		
 		def lineData = scheduleInformationService.getScheduleForLine(s.line)
-		return getTimesForStation(s, lineData)				
+		return getTimesForStation(s, lineData, format)				
 	}
 	
-	def getTimesForStation(Station s, JSONObject lineData){
+	def getTimesForStation(Station s, JSONObject lineData, format="map"){
 		def stationSchedule =[:]		
 		if(lineData){
 			lineData.TripList.Trips.each{ direction ->
@@ -40,15 +40,21 @@ class StationService {
 				}
 			}
 			
-			def result = [:]
-			result.put(s.toString(),stationSchedule)
-			/*
-			def result =s.toString()
-			stationSchedule.each{
-				result+="\\n" + it
-			}			
-			return result
-			*/
+			def result
+			
+			if(format=="map"){
+				result = [:]
+				result.put(s.toString(),stationSchedule)
+			}else{
+				result = "<h3>${s.toString()}</h3><br/>"				
+				stationSchedule.each{ dest->
+					result += "Destination:${dest.key}<br/><hr/>"
+					dest.value.each{ arrival ->
+						result += "Arriving in ${arrival} minutes<br/>"
+					}
+					result += "<br/>"
+				}
+			}			 
 			return result
 		}else{		
 			return s.toString()

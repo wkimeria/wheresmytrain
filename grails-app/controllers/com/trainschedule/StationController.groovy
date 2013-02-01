@@ -40,6 +40,8 @@ class StationController {
             return
         }
 		
+		println "***************************"
+		println stationInstance
 		def schedule = stationService.getRealTimeInfoForStation(stationInstance)
 		
         [stationInstance: stationInstance, schedule:schedule]
