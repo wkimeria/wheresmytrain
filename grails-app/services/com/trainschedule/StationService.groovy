@@ -41,6 +41,10 @@ class StationService {
 			}
 			
 			def result
+			stationSchedule.each{
+				it = it.value?.sort()
+				
+			}
 			
 			if(format=="map"){
 				result = [:]
