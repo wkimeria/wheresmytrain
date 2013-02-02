@@ -6,7 +6,7 @@ class Station {
 	String platformKey
 	String platformName
 	String stationName
-	String platformOrder
+	int platformOrder
 	String startOfLine
 	String endOfLine
 	String branch
