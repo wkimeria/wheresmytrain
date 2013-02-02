@@ -28,7 +28,14 @@ class StationService {
 				def destination = direction.Destination
 				
 				direction.Predictions.each{ prediction ->
-					if(prediction?.Stop ==  s.stopName?.replace("Station","").trim()){
+					String formattedName
+					//TODO:This should be fixed by mapping name in file to name in data returned
+					if(s.stopName!='South Station'){
+						formattedName = s.stopName?.replace("Station","").trim()
+					}else{
+						formattedName = s.stopName?.trim()
+					}
+					if(prediction?.Stop ==  formattedName){
 						if(stationSchedule.containsKey(destination)){
 							def info =  stationSchedule.get(destination)
 							info.add(new BigDecimal(prediction.Seconds/60).intValue())
@@ -54,7 +61,12 @@ class StationService {
 				stationSchedule.each{ dest->
 					result += "Destination:${dest.key}<br/><hr/>"
 					dest.value.each{ arrival ->
-						result += "Arriving in ${arrival} minutes<br/>"
+						if(arrival == 0){
+							result += "Arriving...<br/>"
+						}else{
+							result += "Arriving in ${arrival} minutes<br/>"
+						}
+						
 					}
 					result += "<br/>"
 				}

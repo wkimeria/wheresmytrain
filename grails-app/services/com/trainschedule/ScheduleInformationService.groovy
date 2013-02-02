@@ -26,7 +26,7 @@ class ScheduleInformationService {
 		log.debug("Calling MBTA For ${line} Line Schedule information...")
 		def result
 		def url = "${BASE_URL}${line.toLowerCase()}.json"		
-		result = url.toURL().text
+		result = url.toURL().text		
 		return result
 	}
 }
