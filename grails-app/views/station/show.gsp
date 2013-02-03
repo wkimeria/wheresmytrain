@@ -6,6 +6,16 @@
 <meta name="layout" content="main">
 
 <title><g:message code="default.show.label" args="[entityName]" /></title>
+<script type="text/javascript">
+	window.onload = setupRefresh;
+
+	function setupRefresh() {
+		setTimeout("refreshPage();", 20000);
+	}
+	function refreshPage() {
+		window.location = location.href;
+	}
+</script>
 </head>
 <body>
 	<a href="#show-station" class="skip" tabindex="-1"><g:message
