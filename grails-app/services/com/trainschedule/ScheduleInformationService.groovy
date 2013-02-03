@@ -4,13 +4,13 @@ import org.codehaus.groovy.grails.web.json.JSONObject
 
 class ScheduleInformationService {
 	
-	def redisCachingService
+	def basicCachingService
 	def grailsApplication
 	
 	private final static BASE_URL ="http://Developer.mbta.com/lib/rthr/"
 
 	def getScheduleForLine(String line){		
-		def result = redisCachingService.get("schedule:${line.toLowerCase()}")
+		def result = basicCachingService.get("schedule:${line.toLowerCase()}")
 		if(result){
 			return new JSONObject(result)
 		}	
@@ -18,7 +18,7 @@ class ScheduleInformationService {
 	
 	def cacheNewDataForLineFromMBTA(String line){
 		def result = getScheduleForLineFromMBTA(line)
-		redisCachingService.save("schedule:${line}", result, grailsApplication.config.schedule.cache.expiry)
+		basicCachingService.save("schedule:${line}", result, grailsApplication.config.schedule.cache.expiry)
 	}
 	
 	def getScheduleForLineFromMBTA(String line){
