@@ -11,6 +11,7 @@ class ScheduleInformationService {
 
 	def getScheduleForLine(String line){		
 		def result = basicCachingService.get("schedule:${line.toLowerCase()}")
+		println result
 		if(result){
 			return new JSONObject(result)
 		}	

@@ -15,7 +15,7 @@ class StationController {
 
     def list(Integer max) {
         params.max = 200
-		preventCache(response)
+		preventCache(response)		
         [stationInstanceList: Station.list(max:max, sort: "platformOrder", order: "desc"), stationInstanceTotal: Station.count(),
 			mapColumns: stationService.headers(), mapData: stationService.data()]
     }

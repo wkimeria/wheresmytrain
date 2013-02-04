@@ -13,7 +13,7 @@
 	window.onload = setupRefresh;
 
 	function setupRefresh() {
-		setTimeout("refreshPage();", 20000);
+		setTimeout("refreshPage();", 200000);
 	}
 	function refreshPage() {
 		window.location = location.href;

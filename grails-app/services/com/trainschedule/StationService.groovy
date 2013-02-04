@@ -28,13 +28,7 @@ class StationService {
 				def destination = direction.Destination
 				
 				direction.Predictions.each{ prediction ->
-					String formattedName
-					//TODO:This should be fixed by mapping name in file to name in data returned
-					if(s.stopName!='South Station'){
-						formattedName = s.stopName?.replace("Station","").trim()
-					}else{
-						formattedName = s.stopName?.trim()
-					}
+					String formattedName = getStationName(s.stopName)
 					if(prediction?.Stop ==  formattedName){
 						if(stationSchedule.containsKey(destination)){
 							def info =  stationSchedule.get(destination)
@@ -76,4 +70,8 @@ class StationService {
 			return s.toString()
 		}		
 	}	
+	
+	def getStationName(String s){
+		return ServiceConstants.STATION_NAMES.get(s)	
+	}
 }
