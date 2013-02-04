@@ -1,5 +1,7 @@
 package com.trainschedule
 
+import grails.converters.JSON
+import org.codehaus.groovy.grails.web.json.JSONObject
 import org.springframework.dao.DataIntegrityViolationException
 
 class StationController {
@@ -32,7 +34,7 @@ class StationController {
         redirect(action: "show", id: stationInstance.id)
     }
 
-    def show(Long id) {
+    def show(Long id) {		
         def stationInstance = Station.get(id)
         if (!stationInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'station.label', default: 'Station'), id])
@@ -40,9 +42,20 @@ class StationController {
             return
         }
 		def schedule = stationService.getRealTimeInfoForStation(stationInstance)
-		
         [stationInstance: stationInstance, schedule:schedule]
     }
+	
+	def showAjax(Long id) {		
+		def stationInstance = Station.get(id)
+		if (!stationInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'station.label', default: 'Station'), id])
+			redirect(action: "list")
+			return
+		}
+		def schedule = stationService.getRealTimeInfoForStation(stationInstance)
+		def response = new JSONObject([stationInstance: stationInstance, schedule:schedule])
+		render response as JSON
+	}
 
     def edit(Long id) {
         def stationInstance = Station.get(id)
