@@ -35,7 +35,13 @@
 		$("#show-station").click();		
 	});
 
-	setInterval(function(){$("#show-station").click();},10000);
+	var delay = 10000;
+	(function callee() {
+		$("#show-station").click();
+	    setTimeout(callee, delay);
+	})();
+
+	//setTimeout(function(){$("#show-station").click();},10000);
 	
 	</script>
 	<a href="#show-station" class="skip" tabindex="-1"><g:message
