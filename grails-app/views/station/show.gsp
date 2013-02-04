@@ -7,13 +7,14 @@
 
 <title><g:message code="default.show.label" args="[entityName]" /></title>
 <script type="text/javascript">	
-	function updateEntry(data){		
+	function updateEntry(data){	
+		console.log(data);	
 		var html ="";
 		$.each(data.schedule, function(key, value) {
 			html += "<h3>" + key + "</h3><hr/>"; 
 			$.each(value, function(k, v) {
 				html += "<br/><strong>Destination: " + k + "</strong><br/>";				
-				$.each(v, function(v1) {
+				$.each(v, function(k1, v1) {
 					if(v1==0){
 						html += "Arriving...<br/>";		
 					}else{
