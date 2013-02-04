@@ -58,7 +58,7 @@
 		<div id="show-station" class="content scaffold-show" role="main" onclick="${remoteFunction(
 										                                    controller: 'station',
 										                                    action: 'showAjax',
-										                                    params: "\'id=${stationInstance?.id}\'",
+										                                    params: "\'id=${stationInstance?.id}&time=${new Date()}\'",
 										                                    onSuccess:'updateEntry(data)')}" >  											            
 		test
 	</div>

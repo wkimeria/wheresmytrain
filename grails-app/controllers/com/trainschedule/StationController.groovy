@@ -45,7 +45,8 @@ class StationController {
         [stationInstance: stationInstance, schedule:schedule]
     }
 	
-	def showAjax(Long id) {		
+	def showAjax(Long id) {	
+		log.debug("showAjax called with ${params}")
 		def stationInstance = Station.get(id)
 		if (!stationInstance) {
 			flash.message = message(code: 'default.not.found.message', args: [message(code: 'station.label', default: 'Station'), id])
