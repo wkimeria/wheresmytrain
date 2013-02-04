@@ -26,6 +26,14 @@
 			$(function() {
 				$("#tabs").tabs();
 			});
+
+			if (screen.width < 1280) {
+		        $("#map").hide();
+		    }
+		    else {
+
+		        $("#map").show();
+		    }
 		});
 	</script>
 	
