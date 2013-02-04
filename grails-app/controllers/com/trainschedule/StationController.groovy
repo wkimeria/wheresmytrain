@@ -15,6 +15,7 @@ class StationController {
 
     def list(Integer max) {
         params.max = 200
+		preventCache(response)
         [stationInstanceList: Station.list(max:max, sort: "platformOrder", order: "desc"), stationInstanceTotal: Station.count(),
 			mapColumns: stationService.headers(), mapData: stationService.data()]
     }
@@ -54,8 +55,9 @@ class StationController {
 			return
 		}
 		def schedule = stationService.getRealTimeInfoForStation(stationInstance)
-		def response = new JSONObject([stationInstance: stationInstance, schedule:schedule])
-		render response as JSON
+		def resp = new JSONObject([stationInstance: stationInstance, schedule:schedule])
+		preventCache(response)
+		render resp as JSON
 	}
 
     def edit(Long id) {
@@ -116,4 +118,15 @@ class StationController {
             redirect(action: "show", id: id)
         }
     }
+	
+	private static final String HEADER_PRAGMA = "Pragma";
+	private static final String HEADER_EXPIRES = "Expires";
+	private static final String HEADER_CACHE_CONTROL = "Cache-Control";
+	
+	protected preventCache (response) {
+		response.setHeader(HEADER_PRAGMA, "no-cache");
+		response.setDateHeader(HEADER_EXPIRES, 1L);
+		response.setHeader(HEADER_CACHE_CONTROL, "no-cache");
+		response.addHeader(HEADER_CACHE_CONTROL, "no-store");
+	}
 }
