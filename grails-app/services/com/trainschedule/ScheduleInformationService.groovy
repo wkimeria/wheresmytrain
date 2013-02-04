@@ -10,8 +10,7 @@ class ScheduleInformationService {
 	private final static BASE_URL ="http://Developer.mbta.com/lib/rthr/"
 
 	def getScheduleForLine(String line){		
-		def result = basicCachingService.get("schedule:${line.toLowerCase()}")
-		println result
+		def result = basicCachingService.get("schedule:${line.toLowerCase()}")		
 		if(result){
 			return new JSONObject(result)
 		}	
