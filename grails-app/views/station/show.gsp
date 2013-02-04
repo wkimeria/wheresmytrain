@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta name="layout" content="main">
-
 <title><g:message code="default.show.label" args="[entityName]" /></title>
 <script type="text/javascript">	
 	function updateEntry(data){	
@@ -30,16 +29,26 @@
 </script>
 </head>
 <body>
+<script src="${resource(dir:'js', file:'jquery.ba-dotimeout.js')}" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#show-station").click();		
+
+		$.doTimeout( 10000, function(){
+			$("#show-station").click();
+			return true;
+		});
 	});
 
+	/*
 	var delay = 10000;
 	(function callee() {
 		$("#show-station").click();
 	    setTimeout(callee, delay);
 	})();
+	*/
+
+	
 
 	//setTimeout(function(){$("#show-station").click();},10000);
 	
