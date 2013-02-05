@@ -6,6 +6,7 @@
 <meta name="layout" content="main">
 <gvisualization:apiImport />
 <g:javascript library="jquery" />
+<r:require modules="bootstrap"/>
 <g:set var="entityName"
 	value="${message(code: 'station.label', default: 'Station')}" />
 <title><g:message code="default.list.label" args="[entityName]" /></title>
