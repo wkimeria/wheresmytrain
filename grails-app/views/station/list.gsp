@@ -28,7 +28,7 @@
 				$("#tabs").tabs();
 			});
 
-			if (screen.width < 1000) {
+			if (screen.width < 700) {
 		        $("#map").hide();
 		    }
 		    else {
