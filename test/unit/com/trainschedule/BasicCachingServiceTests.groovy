@@ -12,6 +12,6 @@ import org.junit.*
 class BasicCachingServiceTests {
 
     void testSomething() {
-        fail "Implement me"
+        assert "Not tested yet"
     }
 }

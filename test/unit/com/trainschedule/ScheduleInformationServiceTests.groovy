@@ -12,6 +12,6 @@ import org.junit.*
 class ScheduleInformationServiceTests {
 
     void testSomething() {
-        assert "No Methods to be unit tested as of now"
+        assert "Not tested yet"
     }
 }

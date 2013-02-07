@@ -226,13 +226,9 @@ class StationServiceTests {
 			        ]
 			    }
 			}
-        '''
-		
+        '''		
 		def response = service.getTimesForStation(station,new JSONObject(lineData))
-		println response
-		assert response.contains("Ruggles Station")
-		assert response.contains("Forest Hills")
-		assert response.contains("Oak Grove")
+		assert response == ['Ruggles Station':['Oak Grove':[2], 'Forest Hills':[2]]]
 	}
 	
 	void testTimesForStationNullSchedule(){

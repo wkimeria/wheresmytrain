@@ -63,7 +63,6 @@ grails.project.dependency.resolution = {
 		compile ':google-visualization:0.5.6'		
 		compile ":quartz:1.0-RC5"
 		compile ":jquery-ui:1.8.24"
-		compile ":twitter-bootstrap:2.2.2"
-		
+		compile ":twitter-bootstrap:2.2.2"				
     }
 }
