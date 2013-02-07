@@ -5,6 +5,7 @@
 <head>
 <r:require modules="bootstrap"/>
 <meta name="layout" content="main">
+<g:set var="entityName" value="${message(code: 'castle.label', default: 'Station')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
 <script type="text/javascript">	
 	function updateEntry(data){	
