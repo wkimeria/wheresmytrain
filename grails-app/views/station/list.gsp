@@ -43,15 +43,11 @@
 	<div id="map" style="width: 100%;"></div>
 	<div id="tabs">
 		<ul>
-			<li><a href="#red-line">Red Line</a></li>
-			<li><a href="#orange-line">Orange Line</a></li>
-			<li><a href="#blue-line">Blue Line</a></li>
+			<li><a href="#red-line"><font color="red">Red Line</font></a></li>
+			<li><a href="#orange-line"><font color="orange">Orange Line</font></a></li>
+			<li><a href="#blue-line"><font color="blue">Blue Line</font></a></li>
 		</ul>
 		<div id="red-line">
-
-			<h1>
-				<g:message code="default.list.label" args="[entityName]" />
-			</h1>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">
 					${flash.message}
@@ -79,14 +75,8 @@
 					</g:each>
 				</tbody>
 			</table>
-
-
 		</div>
-		<div id="orange-line">
-
-			<h1>
-				<g:message code="default.list.label" args="[entityName]" />
-			</h1>
+		<div id="orange-line">			
 			<g:if test="${flash.message}">
 				<div class="message" role="status">
 					${flash.message}
@@ -114,13 +104,8 @@
 					</g:each>
 				</tbody>
 			</table>
-
 		</div>
-
-		<div id="blue-line">
-			<h1>
-				<g:message code="default.list.label" args="[entityName]" />
-			</h1>
+		<div id="blue-line">			
 			<g:if test="${flash.message}">
 				<div class="message" role="status">
 					${flash.message}
@@ -148,10 +133,7 @@
 					</g:each>
 				</tbody>
 			</table>
-
-
 		</div>
 	</div>
-
 </body>
 </html>
