@@ -19,6 +19,15 @@ class StationController {
         [stationInstanceList: Station.list(max:max, sort: "platformOrder", order: "desc"), stationInstanceTotal: Station.count(),
 			mapColumns: stationService.headers(), mapData: stationService.data()]
     }
+	
+	def listAjax(Integer max) {
+		params.max = 200
+		def data = []
+		def resp = new JSONObject([stationInstanceList: Station.list(max:max, sort: "platformOrder", order: "desc"), stationInstanceTotal: Station.count(),
+			mapColumns: stationService.headers(), mapData: stationService.data()])
+		preventCache(response)
+		render resp as JSON	
+	}
 
     def show(Long id) {		
         def stationInstance = Station.get(id)

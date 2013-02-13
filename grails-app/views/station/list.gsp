@@ -6,7 +6,7 @@
 <meta name="layout" content="main">
 <gvisualization:apiImport />
 <g:javascript library="jquery" />
-<r:require modules="bootstrap"/>
+<r:require modules="bootstrap" />
 <g:set var="entityName"
 	value="${message(code: 'station.label', default: 'Station')}" />
 <title><g:message code="default.list.label" args="[entityName]" /></title>
@@ -14,10 +14,41 @@
 	window.onload = setupRefresh;
 
 	function setupRefresh() {
-		setTimeout("refreshPage();", 20000);
+		setInterval(function() {
+			refreshPage();
+		}, 30000);		
 	}
 	function refreshPage() {
-		window.location = location.href;
+		console.log("refreshing map...");
+		//window.location = location.href;
+		$.ajax({
+		url:"${request.contextPath}/station/listAjax",
+			dataType : 'json',
+			data : {
+				topicId : $('#topic').val(),
+			},
+			success : function(resp) {
+				visualization_data = new google.visualization.DataTable();
+				$.each(resp.mapColumns, function(index, value) {
+					visualization_data.addColumn(value[0], value[1]);
+				});
+				$.each(resp.mapData, function(index, value) {
+					visualization_data.addRow(value);
+				});
+				var map = new google.visualization.Map(document
+						.getElementById('map'));
+				map.draw(visualization_data, {
+					showTip : true,
+					mapType: "normal"
+					
+				});
+			},
+			error : function(request, status, error) {
+
+			},
+			complete : function() {
+			}
+		});
 	}
 </script>
 </head>
@@ -29,22 +60,22 @@
 			});
 
 			if (screen.width < 700) {
-		        $("#map").hide();
-		    }
-		    else {
+				$("#map").hide();
+			} else {
 
-		        $("#map").show();
-		    }
+				$("#map").show();
+			}
 		});
 	</script>
-	
-	<gvisualization:map elementId="map" columns="${mapColumns}"
-		data="${mapData}" showTip="${true}" />
+
+	<gvisualization:map mapType="normal" elementId="map"
+		columns="${mapColumns}" data="${mapData}" showTip="${true}" />
 	<div id="map" style="width: 100%;"></div>
 	<div id="tabs">
 		<ul>
 			<li><a href="#red-line"><font color="red">Red Line</font></a></li>
-			<li><a href="#orange-line"><font color="orange">Orange Line</font></a></li>
+			<li><a href="#orange-line"><font color="orange">Orange
+						Line</font></a></li>
 			<li><a href="#blue-line"><font color="blue">Blue Line</font></a></li>
 		</ul>
 		<div id="red-line">
@@ -68,7 +99,7 @@
 							<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 								<td><g:link action="show" id="${stationInstance.id}">
 										${fieldValue(bean: stationInstance, field: "stopName")}
-								</g:link></td>
+									</g:link></td>
 							</tr>
 						</g:if>
 
@@ -76,7 +107,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div id="orange-line">			
+		<div id="orange-line">
 			<g:if test="${flash.message}">
 				<div class="message" role="status">
 					${flash.message}
@@ -97,7 +128,7 @@
 							<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 								<td><g:link action="show" id="${stationInstance.id}">
 										${fieldValue(bean: stationInstance, field: "stopName")}
-								</g:link></td>
+									</g:link></td>
 							</tr>
 						</g:if>
 
@@ -105,7 +136,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div id="blue-line">			
+		<div id="blue-line">
 			<g:if test="${flash.message}">
 				<div class="message" role="status">
 					${flash.message}
@@ -126,7 +157,7 @@
 							<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 								<td><g:link action="show" id="${stationInstance.id}">
 										${fieldValue(bean: stationInstance, field: "stopName")}
-								</g:link></td>
+									</g:link></td>
 							</tr>
 						</g:if>
 
