@@ -76,10 +76,10 @@
 	<div id="map" style="width: 100%;"></div>
 	
 	<ul class="nav nav-pills">
-  <li class="inactive"><g:link action="Red">Red Line</g:link>
+  <li class="inactive"><g:link action="Red"><font color="red">Red Line</font></g:link>
   </li>
-  <li class="inactive"><g:link action="Orange">Orange Line</g:link></li>
-  <li class="inactive"><g:link action="Blue">Blue Line</g:link></li>
+  <li class="inactive"><g:link action="Orange"><font color="orange">Orange Line</font></g:link></li>
+  <li class="inactive"><g:link action="Blue"><font color="blue">Blue Line</font></g:link></li>
 </ul>
 	
 <section id="list-station" class="first">
