@@ -8,6 +8,9 @@
 	<meta name="layout" content="kickstart" />
 	<g:set var="entityName" value="${message(code: 'station.label', default: 'Station')}" />
 	<title>Where's My Train?</title>
+	<script type="text/javascript" src="${resource(dir: 'bootstrap-rowlink', file: 'bootstrap-rowlink.js')}"></script>
+	<script type="text/javascript" src="${resource(dir: 'bootstrap-rowlink', file: 'bootstrap-rowlink.min.js')}"></script>
+	
 	<script type="text/javascript">
 	window.onload = setupRefresh;
 
@@ -83,8 +86,7 @@
 </ul>
 	
 <section id="list-station" class="first">
-
-	<table class="table table-bordered">
+	<table class="table table-bordered" data-provides="rowlink">
 		<thead>
 			<tr>
 			
