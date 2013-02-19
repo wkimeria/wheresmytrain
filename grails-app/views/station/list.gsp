@@ -11,6 +11,8 @@
 	<script type="text/javascript" src="${resource(dir: 'bootstrap-rowlink', file: 'bootstrap-rowlink.js')}"></script>
 	<script type="text/javascript" src="${resource(dir: 'bootstrap-rowlink', file: 'bootstrap-rowlink.min.js')}"></script>
 	
+	<link href="${resource(dir: 'bootstrap-rowlink', file: 'bootstrap-rowlink.css')}" type="text/css" rel="stylesheet" media="screen, projection" />
+	<link href="${resource(dir: 'bootstrap-rowlink', file: 'bootstrap-rowlink.min.css')}" type="text/css" rel="stylesheet" media="screen, projection" />
 	<script type="text/javascript">
 	window.onload = setupRefresh;
 
@@ -86,6 +88,7 @@
 </ul>
 	
 <section id="list-station" class="first">
+
 	<table class="table table-bordered" data-provides="rowlink">
 		<thead>
 			<tr>
