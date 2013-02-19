@@ -16,7 +16,8 @@
 			//html += "<h3>" + key + "</h3><hr/>"; 
 			html += "<div align='center'>"; 
 			$.each(value, function(k, v) {
-				html += "<br/><strong>Destination: " + k + "</strong><br/>";				
+				//<span class="label">Default</span>
+				html += "<br/><span class='label label-info'>Destination : " + k + "</span><br/>";				
 				$.each(v, function(k1, v1) {
 					if(v1==0){
 						html += "Arriving...<br/>";		
