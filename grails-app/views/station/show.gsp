@@ -65,7 +65,7 @@
 										                                    action: 'showAjax',
 										                                    params: "\'id=${stationInstance?.id}&time=${new Date()}\'",
 										                                    onSuccess:'updateEntry(data)')}" >  											            
-		test
+		
 	</div>
 </body>
 </html>
