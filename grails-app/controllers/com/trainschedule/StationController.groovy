@@ -47,8 +47,7 @@ class StationController {
 		[stationInstance: stationInstance, schedule:schedule]
 	}
 	
-	def showAjax(Long id) {
-		println "showajax called xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	def showAjax(Long id) {		
 		log.debug("showAjax called with ${params}")
 		def stationInstance = Station.get(id)
 		if (!stationInstance) {

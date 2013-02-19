@@ -14,7 +14,7 @@
 		var html ="";
 		$.each(data.schedule, function(key, value) {
 			//html += "<h3>" + key + "</h3><hr/>"; 
-			html += ""; 
+			html += "<div align='center'>"; 
 			$.each(value, function(k, v) {
 				html += "<br/><strong>Destination: " + k + "</strong><br/>";				
 				$.each(v, function(k1, v1) {
@@ -26,6 +26,7 @@
 								
 				});
 			});
+			html += "</div>"; 
 		});
 		console.log(html);
 		$("#show-station").html(html);		
