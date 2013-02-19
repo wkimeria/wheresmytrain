@@ -8,7 +8,7 @@ class Station {
 	double latitude
 	double longitude
 
-    static constraints = {
+	static constraints = {
 		line blank:false, inList: ["Red", "Blue", "Orange"]
 		platformOrder blank:false
 		stopName blank:false, unique: ['line']
@@ -16,7 +16,7 @@ class Station {
 		longitude blank:false
 		latitude min:-90d, max:90d
 		longitude()
-    }
+	}
 	
 	String toString(){"${stopName}"}
 }

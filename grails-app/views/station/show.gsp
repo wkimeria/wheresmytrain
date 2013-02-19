@@ -1,18 +1,20 @@
 
-<%@ page import="com.trainschedule.Station"%>
-<!DOCTYPE html>
+<%@ page import="com.trainschedule.Station" %>
+<!doctype html>
 <html>
+
 <head>
-<r:require modules="bootstrap"/>
-<meta name="layout" content="main">
-<g:set var="entityName" value="${message(code: 'castle.label', default: 'Station')}" />
-<title><g:message code="default.show.label" args="[entityName]" /></title>
-<script type="text/javascript">	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="layout" content="kickstart" />
+	<g:set var="entityName" value="${message(code: 'station.label', default: 'Station')}" />
+	<title>${stationInstance?.stopName}</title>
+	<script type="text/javascript">	
 	function updateEntry(data){	
 		console.log(data);	
 		var html ="";
 		$.each(data.schedule, function(key, value) {
-			html += "<h3>" + key + "</h3><hr/>"; 
+			//html += "<h3>" + key + "</h3><hr/>"; 
+			html += ""; 
 			$.each(value, function(k, v) {
 				html += "<br/><strong>Destination: " + k + "</strong><br/>";				
 				$.each(v, function(k1, v1) {
@@ -55,8 +57,7 @@
 	//setTimeout(function(){$("#show-station").click();},10000);
 	
 	</script>
-	<a href="#show-station" class="skip" tabindex="-1"><g:message
-			code="default.link.skip.label" default="Skip to content&hellip;" /></a>			
+		
 		<div id="show-station" class="content scaffold-show" role="main" onclick="${remoteFunction(
 										                                    controller: 'station',
 										                                    action: 'showAjax',
@@ -66,3 +67,4 @@
 	</div>
 </body>
 </html>
+	
